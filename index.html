@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summer School — Economics of Health &amp; Human Capital | EcHo · Royal Holloway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  :root{
+    --burgundy:#8B1A3A;
+    --burgundy-deep:#6A1029;
+    --burgundy-light:#A8274E;
+    --cream:#FAF6F1;
+    --sand:#F0E8DD;
+    --charcoal:#2B2B2B;
+    --text:#3A3A3A;
+    --text-light:#6B6B6B;
+    --white:#FFFFFF;
+    --accent-gold:#C8973E;
+    --accent-sage:#5E8C6A;
+    --border:#E0D6CA;
+  }
+
+  html{scroll-behavior:smooth;font-size:16px}
+  body{
+    font-family:'Source Sans 3',system-ui,sans-serif;
+    color:var(--text);
+    background:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ─── HERO ─── */
+  .hero{
+    position:relative;
+    min-height:clamp(520px,70vh,700px);
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    background:var(--burgundy-deep);
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 30%, rgba(200,151,62,.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 70% at 85% 70%, rgba(94,140,106,.10) 0%, transparent 50%),
+      linear-gradient(165deg, #6A1029 0%, #8B1A3A 40%, #7A1533 100%);
+  }
+  .hero-grid{
+    position:absolute;inset:0;opacity:.04;
+    background-image:
+      linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
+    background-size:60px 60px;
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    max-width:1100px;margin:0 auto;
+    padding:3rem 2rem 3.5rem;
+    width:100%;
+  }
+  .hero h1{
+    font-family:'DM Serif Display',Georgia,serif;
+    font-size:clamp(2.4rem,5vw,3.8rem);
+    color:var(--white);
+    line-height:1.12;
+    max-width:700px;
+    margin-bottom:1rem;
+  }
+  .hero h1 em{font-style:italic;color:var(--accent-gold)}
+  .hero-sub{
+    font-size:1.15rem;color:rgba(255,255,255,.7);
+    max-width:600px;line-height:1.6;
+    margin-bottom:2rem;
+  }
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:1.4rem 2.2rem;
+    color:rgba(255,255,255,.9);
+    font-size:.95rem;font-weight:500;
+  }
+  .hero-meta span{display:flex;align-items:center;gap:.45rem}
+  .hero-meta svg{width:18px;height:18px;flex-shrink:0;opacity:.7}
+
+  /* ─── NAV STRIP ─── */
+  .nav-strip{
+    position:sticky;top:0;z-index:100;
+    background:var(--white);
+    border-bottom:1px solid var(--border);
+    box-shadow:0 1px 8px rgba(0,0,0,.05);
+  }
+  .nav-inner{
+    max-width:1100px;margin:0 auto;
+    display:flex;align-items:center;gap:0;
+    padding:0 2rem;overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .nav-inner::-webkit-scrollbar{display:none}
+  .nav-inner a{
+    padding:1rem 1.1rem;
+    font-size:.82rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+    color:var(--text-light);text-decoration:none;
+    white-space:nowrap;
+    border-bottom:2.5px solid transparent;
+    transition:all .2s;
+  }
+  .nav-inner a:hover{color:var(--burgundy);border-bottom-color:var(--burgundy)}
+
+  /* ─── SECTIONS ─── */
+  section{padding:4rem 2rem}
+  .container{max-width:1100px;margin:0 auto}
+  .section-label{
+    font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--burgundy);
+    margin-bottom:.6rem;
+  }
+  .section-title{
+    font-family:'DM Serif Display',Georgia,serif;
+    font-size:clamp(1.6rem,3vw,2.2rem);
+    color:var(--charcoal);
+    line-height:1.2;
+    margin-bottom:1.2rem;
+  }
+
+  /* ─── OVERVIEW ─── */
+  .overview-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;
+    margin-top:2rem;
+  }
+  .overview-text{font-size:1.05rem;color:var(--text);line-height:1.7}
+  .overview-text p+p{margin-top:1rem}
+  .info-cards{display:flex;flex-direction:column;gap:1rem}
+  .info-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:1.3rem 1.5rem;
+    display:flex;align-items:flex-start;gap:1rem;
+  }
+  .info-card .ic-icon{
+    width:42px;height:42px;border-radius:10px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(139,26,58,.07);
+    color:var(--burgundy);
+  }
+  .info-card .ic-icon svg{width:20px;height:20px}
+  .info-card h4{font-size:.92rem;font-weight:700;color:var(--charcoal);margin-bottom:.15rem}
+  .info-card p{font-size:.88rem;color:var(--text-light);line-height:1.5}
+  .info-card a{color:var(--burgundy);text-decoration:underline;text-underline-offset:2px}
+
+  /* ─── PROGRAMME TIMELINE ─── */
+  #programme{background:var(--white)}
+  .programme-blocks{margin-top:2.5rem;display:flex;flex-direction:column;gap:2.5rem}
+  .phase{
+    border:1px solid var(--border);
+    border-radius:16px;overflow:hidden;
+    background:var(--cream);
+  }
+  .phase-header{
+    padding:1.6rem 2rem;
+    display:flex;align-items:center;gap:1.4rem;
+    border-bottom:1px solid var(--border);
+    background:var(--white);
+  }
+  .phase-number{
+    width:54px;height:54px;border-radius:14px;flex-shrink:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-family:'DM Serif Display',serif;
+    color:var(--white);
+    line-height:1;
+  }
+  .phase-number.course{background:var(--burgundy)}
+  .phase-number.workshop{background:var(--accent-sage)}
+  .phase-number small{font-size:.55rem;font-weight:600;font-family:'Source Sans 3',sans-serif;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+  .phase-number span{font-size:1.4rem}
+  .phase-header h3{
+    font-family:'DM Serif Display',serif;
+    font-size:1.25rem;color:var(--charcoal);line-height:1.3;
+  }
+  .phase-header h3 em{font-style:normal;color:var(--text-light);font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:400;display:block;margin-top:.2rem}
+  .phase-body{padding:1.8rem 2rem}
+  .day-row{display:flex;gap:2rem;margin-bottom:1.8rem}
+  .day-row:last-child{margin-bottom:0}
+  .day-label{
+    width:110px;flex-shrink:0;
+    font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--burgundy);
+    padding-top:.15rem;
+  }
+  .day-label span{display:block;font-weight:400;color:var(--text-light);letter-spacing:0;text-transform:none;font-size:.85rem;margin-top:.1rem}
+  .day-sessions{flex:1}
+  .session{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:1rem 1.3rem;
+    margin-bottom:.7rem;
+    display:flex;align-items:baseline;gap:1rem;
+  }
+  .session:last-child{margin-bottom:0}
+  .session-hours{
+    flex-shrink:0;
+    font-size:.78rem;font-weight:600;color:var(--accent-gold);
+    background:rgba(200,151,62,.1);
+    padding:.2rem .55rem;border-radius:5px;
+    white-space:nowrap;
+  }
+  .session-hours.sage{color:var(--accent-sage);background:rgba(94,140,106,.1)}
+  .session-title{font-size:.95rem;font-weight:500;color:var(--charcoal)}
+
+  /* ─── KEYNOTE ─── */
+  .keynote-card{
+    margin-top:1.5rem;
+    background:linear-gradient(135deg,var(--burgundy-deep),var(--burgundy));
+    border-radius:16px;
+    padding:2.2rem 2.5rem;
+    color:var(--white);
+    display:flex;align-items:center;gap:2rem;
+  }
+  .keynote-icon{
+    width:64px;height:64px;flex-shrink:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .keynote-icon svg{width:28px;height:28px;color:var(--accent-gold)}
+  .keynote-card h4{font-family:'DM Serif Display',serif;font-size:1.2rem;line-height:1.3;margin-bottom:.4rem}
+  .keynote-card p{font-size:.92rem;opacity:.75;line-height:1.5}
+
+  /* ─── WHO / APPLY ─── */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+  .who-list{list-style:none;margin-top:1rem}
+  .who-list li{
+    padding:.7rem 0;
+    border-bottom:1px solid var(--border);
+    font-size:.95rem;
+    display:flex;align-items:baseline;gap:.7rem;
+  }
+  .who-list li::before{
+    content:'';width:7px;height:7px;border-radius:50%;flex-shrink:0;
+    background:var(--burgundy);
+    margin-top:.45rem;
+  }
+
+  /* ─── APPLY FORM BOX ─── */
+  #apply{background:var(--white)}
+  .apply-box{
+    margin-top:2rem;
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .apply-box-header{
+    background:var(--burgundy);
+    padding:1.6rem 2rem;
+    color:var(--white);
+  }
+  .apply-box-header h3{font-family:'DM Serif Display',serif;font-size:1.3rem}
+  .apply-box-header p{font-size:.88rem;opacity:.75;margin-top:.3rem}
+  .apply-body{padding:2rem}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+  .form-group{display:flex;flex-direction:column}
+  .form-group.full{grid-column:1/-1}
+  .form-group label{font-size:.8rem;font-weight:600;color:var(--charcoal);margin-bottom:.35rem;letter-spacing:.02em}
+  .form-group input,.form-group select,.form-group textarea{
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:.7rem .9rem;
+    font-size:.92rem;
+    font-family:inherit;
+    color:var(--charcoal);
+    background:var(--cream);
+    transition:border-color .2s;
+  }
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+    outline:none;border-color:var(--burgundy);
+  }
+  .form-group textarea{resize:vertical;min-height:80px}
+
+  .checkbox-group{margin:1rem 0;display:flex;flex-direction:column;gap:.6rem}
+  .checkbox-group label{
+    display:flex;align-items:flex-start;gap:.6rem;
+    font-size:.88rem;color:var(--text);cursor:pointer;
+  }
+  .checkbox-group input[type=checkbox]{
+    margin-top:.25rem;width:16px;height:16px;accent-color:var(--burgundy);
+  }
+
+  .btn-submit{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:var(--burgundy);color:var(--white);
+    border:none;border-radius:10px;
+    padding:.85rem 2rem;
+    font-size:.95rem;font-weight:600;font-family:inherit;
+    cursor:pointer;
+    transition:background .2s;
+  }
+  .btn-submit:hover{background:var(--burgundy-deep)}
+  .btn-submit svg{width:16px;height:16px}
+
+  /* ─── DATES STRIP ─── */
+  .dates-strip{
+    margin-top:2.5rem;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+  }
+  .date-card{
+    background:var(--cream);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:1.2rem 1.4rem;
+    text-align:center;
+  }
+  .date-card h4{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--burgundy);margin-bottom:.3rem}
+  .date-card p{font-size:1rem;font-weight:600;color:var(--charcoal)}
+
+  /* ─── ACCOMMODATION ─── */
+  .accom-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.5rem}
+  .accom-card{
+    background:var(--white);border:1px solid var(--border);border-radius:12px;
+    padding:1.5rem;
+  }
+  .accom-card h4{font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:.3rem}
+  .accom-card p{font-size:.88rem;color:var(--text-light);line-height:1.5;margin-bottom:.8rem}
+  .accom-card a{
+    display:inline-flex;align-items:center;gap:.3rem;
+    font-size:.85rem;font-weight:600;color:var(--burgundy);
+    text-decoration:none;
+  }
+  .accom-card a:hover{text-decoration:underline}
+  .accom-card a svg{width:14px;height:14px}
+
+  /* ─── FOOTER ─── */
+  footer{
+    background:var(--charcoal);
+    color:rgba(255,255,255,.6);
+    padding:2.5rem 2rem;
+    text-align:center;
+    font-size:.85rem;
+    line-height:1.7;
+  }
+  footer a{color:rgba(255,255,255,.8);text-decoration:underline;text-underline-offset:2px}
+
+  /* ─── RESPONSIVENESS ─── */
+  @media(max-width:800px){
+    .overview-grid,.two-col,.form-row,.accom-cards{grid-template-columns:1fr}
+    .day-row{flex-direction:column;gap:.6rem}
+    .day-label{width:auto}
+    .keynote-card{flex-direction:column;text-align:center}
+    .dates-strip{grid-template-columns:1fr}
+    .hero-meta{flex-direction:column;gap:.6rem}
+    .phase-header{flex-direction:column;gap:.8rem;text-align:center}
+  }
+
+  /* ─── LOGO ─── */
+  /* Desktop: float to top-right of the hero content area */
+  .hero-logo{
+    position:absolute;
+    top:2rem;right:2rem;
+    z-index:3;
+    height:100px;
+    opacity:.9;
+    filter:brightness(1.1);
+  }
+
+  /* Mobile: drop out of absolute positioning and flow inline */
+  @media(max-width:800px){
+    .hero-logo{
+      position:static;
+      display:block;
+      height:70px;
+      margin-bottom:1.4rem;
+      opacity:.9;
+    }
+  }
+
+  /* subtle entrance animation */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .hero-content > *{animation:fadeUp .7s ease both}
+  .hero-content > :nth-child(2){animation-delay:.1s}
+  .hero-content > :nth-child(3){animation-delay:.2s}
+  .hero-content > :nth-child(4){animation-delay:.3s}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <!-- Logo lives inside the content flow so it doesn't float above text on mobile -->
+    <img class="hero-logo" src="data:image/jpeg;base64,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JlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczppbGx1c3RyYXRvcj0iaHR0cDovL25zLmFkb2JlLmNvbS9pbGx1c3RyYXRvci8xLjAvIiB4bWxuczp4bXBUUGc9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC90L3BnLyIgeG1sbnM6c3REaW09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9EaW1lbnNpb25zIyIgeG1sbnM6eG1wRz0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL2cvIiB4bWxuczpwZGY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGRmLzEuMy8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgZGM6Zm9ybWF0PSJpbWFnZS9qcGVnIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDEzLTA5LTE2VDEyOjI3OjU2KzAxOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxMy0wOS0xNlQxMjoyNzo1NiswMTowMCIgeG1wOkNyZWF0ZURhdGU9IjIwMTMtMDktMTZUMTI6MjY6NTQrMDE6MDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgSWxsdXN0cmF0b3IgQ1M2IChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjAyODAxMTc0MDcyMDY4MTE4QzE0QzE0ODI0NDNDNTFEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4QzE0QzE0ODI0NDNDNTFEIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InV1aWQ6NUIyMDg5MjQ5M0JGREIxMTkxNEE4NTkwRDMxNTA4QzgiIHhtcE1NOlJlbmRpdGlvbkNsYXNzPSJwcm9vZjpwZGYiIGlsbHVzdHJhdG9yOlN0YXJ0dXBQcm9maWxlPSJCYXNpYyBDTVlLIiB4bXBUUGc6SGFzVmlzaWJsZU92ZXJwcmludD0iRmFsc2UiIHhtcFRQZzpIYXNWaXNpYmxlVHJhbnNwYXJlbmN5PSJGYWxzZSIgeG1wVFBnOk5QYWdlcz0iMSIgcGRmOlByb2R1Y2VyPSJBZG9iZSBQREYgbGlicmFyeSA5LjkwIiBwaG90b3Nob3A6Q29sb3JNb2RlPSI0IiBwaG90b3Nob3A6SUNDUHJvZmlsZT0iVS5TLiBXZWIgQ29hdGVkIChTV09QKSB2MiI+IDxkYzp0aXRsZT4gPHJkZjpBbHQ+IDxyZGY6bGkgeG1sOmxhbmc9IngtZGVmYXVsdCI+QmFzaWMgQ01ZSzwvcmRmOmxpPiA8L3JkZjpBbHQ+IDwvZGM6dGl0bGU+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjAxODAxMTc0MDcyMDY4MTE4QzE0QzE0ODI0NDNDNTFEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4QzE0QzE0ODI0NDNDNTFEIiBzdFJlZjpvcmlnaW5hbERvY3VtZW50SUQ9InV1aWQ6NUIyMDg5MjQ5M0JGREIxMTkxNEE4NTkwRDMxNTA4QzgiIHN0UmVmOnJlbmRpdGlvbkNsYXNzPSJwcm9vZjpwZGYiLz4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6MDc4MDExNzQwNzIwNjgxMTg4QzY5MjIxNTZGNTIwNDUiIHN0RXZ0OndoZW49IjIwMTMtMDgtMDlUMTU6MzE6MDkrMDE6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIElsbHVzdHJhdG9yIENTNS4xIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDpGNzdGMTE3NDA3MjA2ODExOEE2REU4ODU4RTFGNjA4MCIgc3RFdnQ6d2hlbj0iMjAxMy0wOC0wOVQxNTo1NjozMiswMTowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgSWxsdXN0cmF0b3IgQ1M1LjEiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNvbnZlcnRlZCIgc3RFdnQ6cGFyYW1ldGVycz0iZnJvbSBhcHBsaWNhdGlvbi9wb3N0c2NyaXB0IHRvIGFwcGxpY2F0aW9uL3ZuZC5hZG9iZS5pbGx1c3RyYXRvciIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6MDI4MDExNzQwNzIwNjgxMThDMTRDNDMzQTQ4Q0I1M0YiIHN0RXZ0OndoZW49IjIwMTMtMDktMTZUMTI6MjY6NTUrMDE6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIElsbHVzdHJhdG9yIENTNiAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY29udmVydGVkIiBzdEV2dDpwYXJhbWV0ZXJzPSJmcm9tIGFwcGxpY2F0aW9uL3Bvc3RzY3JpcHQgdG8gYXBwbGljYXRpb24vdm5kLmFkb2JlLnBob3Rvc2hvcCIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6MDE4MDExNzQwNzIwNjgxMThDMTRDMTQ4MjQ0M0M1MUQiIHN0RXZ0OndoZW49IjIwMTMtMDktMTZUMTI6Mjc6NTYrMDE6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNvbnZlcnRlZCIgc3RFdnQ6cGFyYW1ldGVycz0iZnJvbSBhcHBsaWNhdGlvbi9wb3N0c2NyaXB0IHRvIGltYWdlL2pwZWciLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImRlcml2ZWQiIHN0RXZ0OnBhcmFtZXRlcnM9ImNvbnZlcnRlZCBmcm9tIGFwcGxpY2F0aW9uL3ZuZC5hZG9iZS5waG90b3Nob3AgdG8gaW1hZ2UvanBlZyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6MDI4MDExNzQwNzIwNjgxMThDMTRDMTQ4MjQ0M0M1MUQiIHN0RXZ0OndoZW49IjIwMTMtMDktMTZUMTI6Mjc6NTYrMDE6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDx4bXBUUGc6TWF4UGFnZVNpemUgc3REaW06dz0iNDAuMDAxMzQ4IiBzdERpbTpoPSIxOS45OTkxMjQiIHN0RGltOnVuaXQ9Ik1pbGxpbWV0ZXJzIi8+IDx4bXBUUGc6UGxhdGVOYW1lcz4gPHJkZjpTZXE+IDxyZGY6bGk+Q3lhbjwvcmRmOmxpPiA8cmRmOmxpPk1hZ2VudGE8L3JkZjpsaT4gPHJkZjpsaT5ZZWxsb3c8L3JkZjpsaT4gPHJkZjpsaT5CbGFjazwvcmRmOmxpPiA8L3JkZjpTZXE+IDwveG1wVFBnOlBsYXRlTmFtZXM+IDx4bXBUUGc6U3dhdGNoR3JvdXBzPiA8cmRmOlNlcT4gPHJkZjpsaT4gPHJkZjpEZXNjcmlwdGlvbiB4bXBHOmdyb3VwTmFtZT0iRGVmYXVsdCBTd2F0Y2ggR3JvdXAiIHhtcEc6Z3JvdXBUeXBlPSIwIj4gPHhtcEc6Q29sb3JhbnRzPiA8cmRmOlNlcT4gPHJkZjpsaSB4bXBHOnN3YXRjaE5hbWU9IldoaXRlIiB4bXBHOm1vZGU9IkNNWUsiIHhtcEc6dHlwZT0iUFJPQ0VTUyIgeG1wRzpjeWFuPSIwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSIwLjAwMDAwMCIgeG1wRzp5ZWxsb3c9IjAuMDAwMDAwIiB4bXBHOmJsYWNrPSIwLjAwMDAwMCIvPiA8cmRmOmxpIHhtcEc6c3dhdGNoTmFtZT0iQmxhY2siIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOmN5YW49IjcxLjM4OTMyOCIgeG1wRzptYWdlbnRhPSI2NS4zNDk4MDgiIHhtcEc6eWVsbG93PSI2Ni44NzI2NjUiIHhtcEc6YmxhY2s9Ijc2LjcxMTY3OCIvPiA8cmRmOmxpIHhtcEc6c3dhdGNoTmFtZT0iUEFOVE9ORSAxNjYgQyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOnRpbnQ9IjEwMC4wMDAwMDAiIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzpjeWFuPSIwLjAwMDAwMCIgeG1wRzptYWdlbnRhPSI3MC4wMDAwMDAiIHhtcEc6eWVsbG93PSIxMDAuMDAwMDAwIiB4bXBHOmJsYWNrPSIwLjAwMDAwMCIvPiA8cmRmOmxpIHhtcEc6c3dhdGNoTmFtZT0iUEFOVE9ORSA0MzIgQyIgeG1wRzp0eXBlPSJQUk9DRVNTIiB4bXBHOnRpbnQ9IjEwMC4wMDAwMDAiIHhtcEc6bW9kZT0iQ01ZSyIgeG1wRzpjeWFuPSI2NS4wMDAwMDAiIHhtcEc6bWFnZW50YT0iNDMuMDAwMDAwIiB4bXBHOnllbGxvdz0iMjYuMDAwMDAwIiB4bXBHOmJsYWNrPSI3OC4wMDAwMDAiLz4gPC9yZGY6U2VxPiA8L3htcEc6Q29sb3JhbnRzPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6bGk+IDwvcmRmOlNlcT4gPC94bXBUUGc6U3dhdGNoR3JvdXBzPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8P3hwYWNrZXQgZW5kPSJ3Ij8+IP/tADpQaG90b3Nob3AgMy4wADhCSU0EBAAAAAAAHhwBWgADGyVHHAIAAAIAABwCBQAKQmFzaWMgQ01ZS//bAEMAAwICAwICAwMDAwQDAwQFCAUFBAQFCgcHBggMCgwMCwoLCw0OEhANDhEOCwsQFhARExQVFRUMDxcYFhQYEhQVFP/bAEMBAwQEBQQFCQUFCRQNCw0UFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFP/AABEIAdgDsQMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlp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BBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAV8fa//wAh7Uv+vmT/ANENfYNfH2v/APIe1L/r5k/9CNfqHA/x4j0j+p+PeInwYX1l/wC2lCiiiv1g/EwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPtCiiiv5XP7NCiiigAooooAKKKKACiiigAooooAKKKKACiiiugAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACvj7X/+Q9qX/XzJ/wChGvsGvj7X/wDkPal/18yf+hGv1Dgf48R6R/U/HvET4ML6y/8AbShRRRX6wfiYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH2hRRRX8rn9mhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABXx9r/wDyHtS/6+ZP/QjX2DXx9r//ACHtS/6+ZP8A0I1+ocD/AB4j0j+p+PeInwYX1l/7aUKKKK/WD8TCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+0KKKK/lc/s0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACvj7X/wDkPal/18yf+hGvsGvj7X/+Q9qX/XzJ/wChGv1Dgf48R6R/U/HvET4ML6y/9tKFFFFfrB+JhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAfaFFFFfyuf2aFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABXx9r/8AyHtS/wCvmT/0I19g18fa/wD8h7Uv+vmT/wBCNfqHA/x4j0j+p+PeInwYX1l/7aUKKKK/WD8TCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+0KKKK/lc/s0KKKKACiiigD/2Q==" alt="Royal Holloway, University of London">
+    <h1>Summer School in Economics of <em>Health &amp; Human Capital</em></h1>
+    <p class="hero-sub">A four-day programme in central London combining a graduate course in health economics with a research workshop featuring contributed talks, posters, and a keynote lecture.</p>
+    <div class="hero-meta">
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        12 – 15 May 2026
+      </span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Central London
+      </span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+        10-hour training course + individual feedback sessions + 2-day workshop
+      </span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        No fee · In person
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-strip">
+  <div class="nav-inner">
+    <a href="#overview">Overview</a>
+    <a href="#programme">Programme</a>
+    <a href="#who">Who Should Apply</a>
+    <a href="#apply">Register</a>
+    <a href="#practical">Practical Info</a>
+  </div>
+</nav>
+
+<!-- ═══ OVERVIEW ═══ -->
+<section id="overview">
+  <div class="container">
+    <div class="section-label">About the Summer School</div>
+    <h2 class="section-title">Overview</h2>
+    <div class="overview-grid">
+      <div class="overview-text">
+        <p>This summer school is organised by the <strong>Centre for the Economics of the Household (EcHo)</strong> at Royal Holloway, University of London. It brings together doctoral students and early-career researchers interested in the economics of health and human capital. The four-day programme takes place in central London and combines structured teaching with an open research workshop.</p>
+        <p><strong>Days 1–2</strong> feature an intensive graduate course covering the economic modelling of health, early-life conditions, education-health interactions, and the intergenerational transmission of health and disadvantage. The course is taught by <strong>Martin Karlsson</strong> (Leverhulme Visiting Professor; Director, CINCH, University of Duisburg-Essen). On the afternoon of Day 2, participants can sign up for individual research feedback meetings with Professors Arnaud Chevalier, Melanie Lührmann, and Martin Karlsson, offered on a first-come-first-served basis.</p>
+        <p><strong>Days 3–4</strong> shift to a research workshop where participants can present their own work through contributed talks or a poster session, alongside invited presentations and a keynote lecture.</p>
+      </div>
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="ic-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </div>
+          <div>
+            <h4>Dates</h4>
+            <p>12 – 15 May 2026 (Tuesday – Friday)</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="ic-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div>
+            <h4>Location</h4>
+            <p>Stewart House, 32 Russell Square, London WC1B 5DN<br>(all four days)</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="ic-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <h4>Fee</h4>
+            <p>There is no registration fee. Participants are expected to fund their own travel and accommodation.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="ic-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <h4>Instructor</h4>
+            <p><strong>Martin Karlsson</strong><br>Leverhulme Visiting Professor · Director, CINCH Essen</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="ic-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div>
+            <h4>Organized by</h4>
+            <p><a href="#">EcHo</a> — Economics of Health &amp; Human Capital, Royal Holloway, University of London</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROGRAMME ═══ -->
+<section id="programme">
+  <div class="container">
+    <div class="section-label">Programme</div>
+    <h2 class="section-title">Programme</h2>
+
+    <div class="programme-blocks">
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number course"><small>Phase</small><span>I</span></div>
+          <h3>Graduate Course: Economics of Health<em>Stewart House, Russell Square, London · 12–13 May</em></h3>
+        </div>
+        <div class="phase-body">
+          <div class="day-row">
+            <div class="day-label">Day 1<span>Tue 12 May</span></div>
+            <div class="day-sessions">
+              <div class="session">
+                <span class="session-hours">2 h</span>
+                <span class="session-title">Beyond Grossman: Recent Advances in Economic Modelling of Health</span>
+              </div>
+              <div class="session">
+                <span class="session-hours">2 h</span>
+                <span class="session-title">Early Life Conditions and Targeted Policies (Part I)</span>
+              </div>
+              <div class="session">
+                <span class="session-hours">2 h</span>
+                <span class="session-title">Early Life Conditions and Targeted Policies (Part II)</span>
+              </div>
+            </div>
+          </div>
+          <div class="day-row">
+            <div class="day-label">Day 2<span>Wed 13 May</span></div>
+            <div class="day-sessions">
+              <div class="session">
+                <span class="session-hours">2 h</span>
+                <span class="session-title">Education and Health</span>
+              </div>
+              <div class="session">
+                <span class="session-hours">2 h</span>
+                <span class="session-title">Intergenerational Transmission of Health</span>
+              </div>
+              <div class="session">
+                <span class="session-hours" style="color:var(--accent-sage);background:rgba(94,140,106,.1)">PM</span>
+                <span class="session-title">Individual Research Feedback Meetings<br><span style="font-size:.84rem;color:var(--text-light)">With Professors Arnaud Chevalier, Melanie Lührmann &amp; Martin Karlsson · First come, first served — sign up at registration</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number workshop"><small>Phase</small><span>II</span></div>
+          <h3>Research Workshop: Health &amp; Human Capital<em>Stewart House, Russell Square, London · 14–15 May</em></h3>
+        </div>
+        <div class="phase-body">
+          <div class="day-row">
+            <div class="day-label">Days 3–4<span>Thu–Fri 14–15 May</span></div>
+            <div class="day-sessions">
+              <div class="session">
+                <span class="session-hours sage">Invited</span>
+                <span class="session-title">Invited presentations on health and human capital</span>
+              </div>
+              <div class="session">
+                <span class="session-hours sage">Contributed</span>
+                <span class="session-title">Short talks and poster session by summer school participants</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="keynote-card">
+            <div class="keynote-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.09 6.26L21 9.27l-5.18 4.73L17.82 21 12 17.27 6.18 21l1.82-7L3 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div>
+              <h4>Keynote Lecture: From Cradle to Grave — Life-Cycle and Intergenerational Dynamics of Health</h4>
+              <p>Martin Karlsson · Leverhulme Visiting Professor | Director, CINCH, University of Duisburg-Essen</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHO SHOULD APPLY ═══ -->
+<section id="who">
+  <div class="container">
+    <div class="section-label">Audience</div>
+    <h2 class="section-title">Who Should Apply</h2>
+    <div class="two-col">
+      <div>
+        <p style="font-size:1.02rem;line-height:1.7">The summer school is designed for graduate students and early-career researchers in economics and related disciplines who want to deepen their understanding of health economics, human capital theory, and the methods used to evaluate health-related policies across the life course.</p>
+        <ul class="who-list">
+          <li>PhD students in economics, public policy, demography, or epidemiology</li>
+          <li>Early-career researchers (post-docs and lecturers) working on health, education, or household economics</li>
+          <li>Master's students with strong quantitative training considering doctoral study in these areas</li>
+          <li>Policy researchers at government agencies and think tanks working on health and social policy</li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label" style="margin-top:0">Topics We Welcome</div>
+        <p style="font-size:.95rem;color:var(--text-light);line-height:1.7;margin-top:.4rem">Participants applying to present at the workshop (poster or short talk) are invited to submit work on any of the following topics:</p>
+        <ul class="who-list">
+          <li>Health and labour markets and policies</li>
+          <li>Economic determinants of health</li>
+          <li>Health inequalities</li>
+          <li>Life-cycle health dynamics</li>
+          <li>Early childhood interventions and environments</li>
+          <li>Health and education</li>
+          <li>Healthcare access and financing</li>
+          <li>Mental health and well-being</li>
+          <li>Household well-being and IPV</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REGISTER ═══ -->
+<section id="apply">
+  <div class="container">
+    <div class="section-label">Registration</div>
+    <h2 class="section-title">Apply to Attend</h2>
+    <p style="font-size:1.02rem;color:var(--text);max-width:680px;line-height:1.7">Places are limited. Please complete the form below to register your interest. You may attend the full programme (course + workshop), or the workshop only. If you wish to present, include a title and short abstract.</p>
+
+    <div class="dates-strip">
+      <div class="date-card">
+        <h4>Registration Deadline</h4>
+        <p>20 April 2026</p>
+      </div>
+      <div class="date-card">
+        <h4>Notification</h4>
+        <p>28 April 2026</p>
+      </div>
+      <div class="date-card">
+        <h4>Summer School</h4>
+        <p>12 – 15 May 2026</p>
+      </div>
+    </div>
+
+    <div class="apply-box" style="margin-top:2rem">
+      <div class="apply-box-header">
+        <h3>Registration Form</h3>
+        <p>All fields marked * are required</p>
+      </div>
+      <div class="apply-body">
+        <form id="registrationForm">
+          <div class="form-row">
+            <div class="form-group"><label>First Name *</label><input type="text" name="firstName" required></div>
+            <div class="form-group"><label>Last Name *</label><input type="text" name="lastName" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email Address *</label><input type="email" name="email" required></div>
+            <div class="form-group"><label>Institution / Affiliation *</label><input type="text" name="institution" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Current Position *</label>
+              <select name="position" required>
+                <option value="" disabled selected>Select…</option>
+                <option>PhD student</option>
+                <option>Post-doctoral researcher</option>
+                <option>Lecturer / Assistant Professor</option>
+                <option>Master's student</option>
+                <option>Policy researcher</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>I wish to register for *</label>
+              <select name="registerFor" required>
+                <option value="" disabled selected>Select…</option>
+                <option>Full programme (Course + Workshop)</option>
+                <option>Workshop only (14–15 May)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="poster"> I would like to present a <strong>poster</strong> at the workshop</label>
+            <label><input type="checkbox" name="shortTalk"> I would like to give a <strong>short talk</strong> at the workshop</label>
+          </div>
+
+          <div class="form-row" style="margin-top:1rem">
+            <div class="form-group full">
+              <label>Paper / Poster Title (if presenting)</label>
+              <input type="text" name="paperTitle" placeholder="e.g. The Long-Run Effects of Early Nutrition on Adult Health">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Abstract (max 300 words, if presenting)</label>
+              <textarea name="abstract" placeholder="Brief description of your research…"></textarea>
+            </div>
+          </div>
+
+          <div style="margin-top:1.2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+            <button type="submit" class="btn-submit" id="submitBtn">
+              Submit Registration
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <span style="font-size:.82rem;color:var(--text-light)">or email <a href="mailto:echo.rhul@gmail.com" style="color:var(--burgundy)">echo.rhul@gmail.com</a></span>
+          </div>
+
+          <div id="formSuccess" style="display:none;margin-top:1rem;padding:1rem 1.3rem;background:rgba(94,140,106,.1);border:1px solid var(--accent-sage);border-radius:10px;color:var(--accent-sage);font-weight:600">
+            ✓ Thank you! Your registration has been received. We will be in touch.
+          </div>
+          <div id="formError" style="display:none;margin-top:1rem;padding:1rem 1.3rem;background:rgba(139,26,58,.08);border:1px solid var(--burgundy);border-radius:10px;color:var(--burgundy);font-weight:600">
+            Something went wrong. Please try again or email us directly at echo.rhul@gmail.com.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRACTICAL INFO ═══ -->
+<section id="practical">
+  <div class="container">
+    <div class="section-label">Practical Information</div>
+    <h2 class="section-title">Venue &amp; Accommodation</h2>
+    <p style="font-size:1.02rem;color:var(--text);max-width:680px;line-height:1.7;margin-bottom:1rem">The entire summer school takes place at <strong>Stewart House, 32 Russell Square, London WC1B 5DN</strong>, in the heart of Bloomsbury. There is no registration fee. Participants are expected to cover their own travel and accommodation.</p>
+
+    <div class="accom-cards" style="grid-template-columns:1fr">
+      <div class="accom-card">
+        <h4>Affordable Accommodation · University of London</h4>
+        <p>The University of London offers affordable rooms at Stay Central, located within walking distance of Stewart House in the Bloomsbury area.</p>
+        <a href="https://www.london.ac.uk/about/services/stay-central" target="_blank">
+          Book Stay Central accommodation
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <strong style="color:rgba(255,255,255,.85)">EcHo — Economics of Health &amp; Human Capital</strong><br>
+    Royal Holloway, University of London<br><br>
+    Questions? Contact <a href="mailto:echo.rhul@gmail.com">echo.rhul@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const btn = document.getElementById('submitBtn');
+  const successMsg = document.getElementById('formSuccess');
+  const errorMsg = document.getElementById('formError');
+  
+  successMsg.style.display = 'none';
+  errorMsg.style.display = 'none';
+  
+  btn.disabled = true;
+  btn.innerHTML = 'Submitting…';
+  
+  const form = this;
+  const data = {
+    timestamp: new Date().toISOString(),
+    firstName: form.firstName.value,
+    lastName: form.lastName.value,
+    email: form.email.value,
+    institution: form.institution.value,
+    position: form.position.value,
+    registerFor: form.registerFor.value,
+    poster: form.poster.checked ? 'Yes' : 'No',
+    shortTalk: form.shortTalk.checked ? 'Yes' : 'No',
+    paperTitle: form.paperTitle.value || '',
+    abstract: form.abstract.value || ''
+  };
+  
+  try {
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    
+    successMsg.style.display = 'block';
+    form.reset();
+  } catch (err) {
+    errorMsg.style.display = 'block';
+    console.error('Form submission error:', err);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Submit Registration <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+  }
+});
+</script>
+
+</body>
+</html>
